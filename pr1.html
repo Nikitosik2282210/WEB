@@ -3,62 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <title>Практична робота №1 - Розклад</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Таблица как на скриншоте */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px 4px;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        /* Голубая шапка */
+        th {
+            background-color: #aee2f7;
+            font-weight: bold;
+            height: 35px;
+        }
+
+        /* Колонка со временем */
+        .time-col {
+            font-weight: bold;
+            width: 10%;
+            background-color: #ffffff;
+            line-height: 1.4;
+        }
+
+        /* Желтые ячейки с предметами */
+        .subject {
+            background-color: #fff7aa;
+            line-height: 1.3;
+        }
+
+        .subject-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .teacher {
+            font-style: italic;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="index.html">⬅ Повернутися на Головну</a>
-        </nav>
-    </header>
+    <a href="index.html" class="nav-link">⬅ Повернутися на Головну</a>
 
-    <main>
-        <h2>Розклад занять групи</h2>
-        
-        <!-- Створення таблиці -->
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>День тижня</th>
-                    <th>№ Пари</th>
-                    <th>Час</th>
-                    <th>Дисципліна</th>
-                    <th>Викладач</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Понеділок -->
-                <tr>
-                    <td rowspan="2">Понеділок</td>
-                    <td>1</td>
-                    <td>08:30 - 10:05</td>
-                    <td>Основи програмування</td>
-                    <td>Іванов І.І.</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>10:25 - 12:00</td>
-                    <td>Вища математика</td>
-                    <td>Петров П.П.</td>
-                </tr>
-                <!-- Вівторок -->
-                <tr>
-                    <td rowspan="2">Вівторок</td>
-                    <td>1</td>
-                    <td>08:30 - 10:05</td>
-                    <td>Фізика</td>
-                    <td>Сидоров С.С.</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>10:25 - 12:00</td>
-                    <td>Бази даних</td>
-                    <td>Коваленко К.К.</td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+    <h2>Розклад на місяць :</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 8%;">Пн</th>
+                <th>31.08.2026</th>
+                <th>07.09.2026</th>
+                <th>14.09.2026</th>
+                <th>21.09.2026</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 1 пара -->
+            <tr>
+                <td class="time-col">1 пара<br>08:00<br>09:20</td>
+                <td></td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">ВМ [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Білоусова С.В.</div>
+                </td>
+                <td></td>
+            </tr>
+
+            <!-- 2 пара -->
+            <tr>
+                <td class="time-col">2 пара<br>09:30<br>10:50</td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">ОП [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Гавор А.С.</div>
+                </td>
+                <td class="subject">
+                    <div class="subject-title">УМ-2022 [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Даниленко Л.В.</div>
+                </td>
+                <td class="subject">
+                    <div class="subject-title">ОП [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Гавор А.С.</div>
+                </td>
+            </tr>
+
+            <!-- 3 пара -->
+            <tr>
+                <td class="time-col">3 пара<br>11:10<br>12:30</td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">ФЛ [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Кошетар У.П.</div>
+                </td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">ФЛ [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Кошетар У.П.</div>
+                </td>
+            </tr>
+
+            <!-- 4 пара -->
+            <tr>
+                <td class="time-col">4 пара<br>12:40<br>14:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <!-- 5 пара -->
+            <tr>
+                <td class="time-col">5 пара<br>14:10<br>15:30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <!-- 6 пара -->
+            <tr>
+                <td class="time-col">6 пара<br>15:40<br>17:00</td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">СП-2024 [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Фокін О.О.</div>
+                </td>
+                <td></td>
+                <td class="subject">
+                    <div class="subject-title">СП-2024 [Лк]</div>
+                    <div>ауд. Дистанц.</div>
+                    <div class="teacher">Фокін О.О.</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
