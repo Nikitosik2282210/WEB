@@ -2,43 +2,67 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторна робота №1</title>
+    <title>Особистий веб-сайт Подорвана Нікіти</title>
+    <!-- Підключення CSS-файлу для стилів -->
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
 
-    <a href="labs_list.html">Повернутися до списку лабораторних робіт</a>
+    <!-- Шапка сайту та Навігаційне меню -->
+    <header>
+        <h1>Особистий веб-сайт Подорван Нікіти Олеговича</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="#about">Про мене</a></li>
+                <li><a href="#practices">Практичні роботи</a></li>
+                <li><a href="#labs">Лабораторні заняття</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h2>Реєстрація користувача</h2>
+    <main>
+        <!-- Секція "Про мене" -->
+        <section id="about">
+            <h2>Про мене</h2>
+            <img src="img/my_photo.jpg" alt="Фото студента" width="200">
+            <p><strong>Ім'я:</strong> Подорван Нікіта Олегович</p>
+            <p><strong>Контакти:</strong> nikitapodorvan24@gmail.com, +380965432975</p>
+            <p><strong>Біографія:</strong> Родом з Кривого Рогу. Зараз навчаюся в ДУІКТ за спеціальністю «Технології цифрового розвитку», 
+        де вивчаю веб-розробку, програмування та мережеві технології. 
+        Паралельно з навчанням серйозно займаюся плаванням (рівень КМС) — спорт сформував у мені дисципліну, 
+        витривалість та вміння працювати на результат як у басейні, так і в коді. </p>
+        </section>
 
-    <form action="https://webhook.site/ad463f69-a865-4375-8083-01544e56ac8a" method="POST">
-        
-        <label for="user_name">Ім'я:</label>
-        <input type="text" id="user_name" name="first_name" required><br><br>
+        <!-- Секція "Практичні роботи" -->
+        <section id="practices">
+            <h2>Практичні роботи</h2>
+            <ul>
+                <li>
+                    <a href="practice1.html">Практична робота №1</a> - Створення таблиці з розкладом занять.
+                </li>
+            </ul>
+        </section>
 
-        <label for="user_surname">Прізвище:</label>
-        <input type="text" id="user_surname" name="last_name" required><br><br>
+        <!-- Секція "Лабораторні заняття" (ось тут ми підв'язуємо твою форму реєстрації!) -->
+        <section id="labs">
+            <h2>Лабораторні заняття</h2>
+            <ul>
+                <li>
+                    <!-- Важливо: тут вказано lab1.html. Твоя форма має називатися саме так! -->
+                    <a href="lab1.html">Лабораторна робота №1</a> - Форма реєстрації користувача.
+                </li>
+            </ul>
+        </section>
+    </main>
 
-        <label for="user_email">Електронна пошта:</label>
-        <input type="email" id="user_email" name="email" required><br><br>
-
-        <label for="user_pass">Пароль:</label>
-        <input type="password" id="user_pass" name="password" required><br><br>
-
-        <label for="user_pass_confirm">Підтвердження паролю:</label>
-        <input type="password" id="user_pass_confirm" name="password_confirm" required><br><br>
-
-        <label for="b_date">Дата народження:</label>
-        <input type="date" id="b_date" name="birth_date"><br><br>
-
-        <label for="user_gender">Стать:</label>
-        <select id="user_gender" name="gender">
-            <option value="male">Чоловіча</option>
-            <option value="female">Жіноча</option>
-            <option value="other">Інше</option>
-        </select><br><br>
-
-        <input type="submit" value="Відправити реєстрацію">
-    </form>
+    <!-- Футер сайту -->
+    <footer>
+        <hr>
+        <p>Роки навчання: 2025 - 2029</p>
+        <p>GitHub: <a href="https://github.com/Nikitosik2282210" target="_blank">Мій репозиторій</a></p>
+        <p>Контакти: Telegram @N_I_K_I_T_O_SIK</p>
+    </footer>
 
 </body>
 </html>

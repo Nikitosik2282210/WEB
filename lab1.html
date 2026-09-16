@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №1</title>
+</head>
+<body>
+
+    <a href="index.html">Повернутися до списку лабораторних робіт</a>
+
+    <h2>Реєстрація користувача</h2>
+
+    <form action="https://webhook.site/ad463f69-a865-4375-8083-01544e56ac8a" method="POST">
+        
+        <label for="user_name">Ім'я:</label>
+        <input type="text" id="user_name" name="first_name" required><br><br>
+
+        <label for="user_surname">Прізвище:</label>
+        <input type="text" id="user_surname" name="last_name" required><br><br>
+
+        <label for="user_email">Електронна пошта:</label>
+        <input type="email" id="user_email" name="email" required><br><br>
+
+        <label for="user_pass">Пароль:</label>
+        <input type="password" id="user_pass" name="password" required><br><br>
+
+        <label for="user_pass_confirm">Підтвердження паролю:</label>
+        <input type="password" id="user_pass_confirm" name="password_confirm" required><br><br>
+
+        <label for="b_date">Дата народження:</label>
+        <input type="date" id="b_date" name="birth_date"><br><br>
+
+        <label for="user_gender">Стать:</label>
+        <select id="user_gender" name="gender">
+            <option value="male">Чоловіча</option>
+            <option value="female">Жіноча</option>
+            <option value="other">Інше</option>
+        </select><br><br>
+
+        <input type="submit" value="Відправити реєстрацію">
+    </form>
+
+</body>
+</html>
