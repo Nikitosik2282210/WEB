@@ -74,9 +74,9 @@ section h2 {
 
 /* Настройки для секции "Про мене" и фото */
 #about img {
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    float: left; /* Текст будет обтекать фото справа */
+    float: left; 
     margin-right: 25px;
     margin-bottom: 15px;
 }
