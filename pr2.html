@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторна робота №1</title>
+    <title>Практична робота №2</title>
     
     <style>
         form {
@@ -19,7 +19,8 @@
             
             /* d. */
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-            
+
+            /* e. */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -33,20 +34,35 @@
             margin-bottom: 15px;
             border: 1px solid #cccccc;
             border-radius: 5px;
-            box-sizing: border-box; /* Щоб padding не збільшував загальну ширину */
+            box-sizing: border-box; 
+            font-style: italic;
+            font-weight: bold;
+            color: red;
         }
 
-        /* Стилізація саме кнопки "Відправити" */
+        /* Стилізація кнопки "Відправити" */
         form input[type="submit"] {
             background-color: #4a69bd;
             color: #ffffff;
             border: none;
             cursor: pointer;
             font-weight: bold;
+            
         }
 
         form input[type="submit"]:hover {
             background-color: #3c55a5; /* Зміна кольору при наведенні */
+        }
+
+        label[for="user_gender"]{
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            color: red;
+        }
+
+        option[value="male"]{
+            color: red;
+    
         }
     </style>
 </head>

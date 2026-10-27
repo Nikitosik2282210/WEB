@@ -19,7 +19,7 @@ div > p {
 }
 
 /* 5. */
-[href^="https"] {
+a[href^="https"] {
     color: green;
 }
 
@@ -41,7 +41,11 @@ div p {
 
 /* 9.  */
 input:checked {
-    background-color: lightblue;
+    accent-color: orange;
+}
+
+input[type="checkbox"] {
+  accent-color: orange; 
 }
 
 /* 10.  */

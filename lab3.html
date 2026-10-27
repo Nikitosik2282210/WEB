@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", "Arial", sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- ШАПКА (HEADER) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+            padding: 0 16px;
+            background-color: #0f0f0f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-icon {
+            width: 30px;
+            height: 20px;
+            background-color: #ff0000;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon::after {
+            content: "";
+            border-style: solid;
+            border-width: 5px 0 5px 10px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+
+        .header-center {
+            display: flex;
+            align-items: center;
+            width: 40%;
+            max-width: 600px;
+        }
+
+        .search-box {
+            display: flex;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px;
+            background-color: #121212;
+            border: 1px solid #303030;
+            border-radius: 40px 0 0 40px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #1c62b9;
+        }
+
+        .search-button {
+            padding: 0 20px;
+            background-color: #222222;
+            border: 1px solid #303030;
+            border-left: none;
+            border-radius: 0 40px 40px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #555;
+            cursor: pointer;
+        }
+
+        /* --- ОСНОВНИЙ КОНТЕЙНЕР --- */
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* --- БОКОВА ПАНЕЛЬ (SIDEBAR) --- */
+        aside {
+            width: 240px;
+            background-color: #0f0f0f;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 10px 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background-color: #272727;
+        }
+
+        .nav-link.active {
+            background-color: #272727;
+            font-weight: bold;
+        }
+
+        /* --- ОСНОВНА СІТКА ВІДЕО (MAIN) --- */
+        main {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            row-gap: 32px;
+        }
+
+        .video-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .thumbnail-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #272727;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-time {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background-color: rgba(0, 0, 0, 0.8);
+            font-size: 12px;
+            padding: 3px 4px;
+            border-radius: 4px;
+        }
+
+        .video-info {
+            display: flex;
+            gap: 12px;
+        }
+
+        .channel-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #555;
+            flex-shrink: 0;
+        }
+
+        .video-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .video-title {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .channel-name, .video-meta {
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon">
+                <svg viewBox="0 0 24 24" fill="#fff"><path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path></svg>
+            </div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span>YouTube</span>
+            </a>
+        </div>
+
+        <div class="header-center">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Пошук">
+                <button class="search-button">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M20.87 20.17l-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.72l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="user-avatar"></div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНИЙ БЛОК -->
+    <div class="container">
+        <!-- БОКОВЕ МЕНЮ -->
+        <aside>
+            <!-- Кнопка: Головна -->
+            <a href="#" class="nav-link active">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="flex-shrink: 0;">
+                    <path d="m11.485 2.143-8 4.8-2 1.2a1 1 0 001.03 1.714L3 9.567V20a2 2 0 002 2h5v-8h4v8h5a2 2 0 002-2V9.567l.485.29a1 1 0 001.03-1.714l-2-1.2-8-4.8a1 1 0 00-1.03 0Z"></path>
+                </svg>
+                <span>Головна</span>
+            </a>
+
+            <!-- Кнопка: Shorts -->
+            <a href="#" class="nav-link">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="flex-shrink: 0;">
+                    <path d="m13.467 1.19-8 4.7a5 5 0 00-.255 8.46 5 5 0 005.32 8.462l8-4.7a5 5 0 00.258-8.462 5 5 0 001.641-6.464l-.12-.217a5 5 0 00-6.844-1.78m5.12 2.79a2.999 2.999 0 01-1.067 4.107l-1.327.78a1 1 0 00.096 1.775l.943.423a3 3 0 01.288 5.323l-8 4.7a3 3 0 01-3.039-5.173l1.327-.78a1 1 0 00-.097-1.775l-.942-.423a3 3 0 01-.288-5.323l8-4.7a3 3 0 014.106 1.066ZM15 12l-5-3v6l5-3Z"></path>
+                </svg>
+                <span>Shorts</span>
+            </a>
+
+            <!-- Кнопка: Підписки -->
+            <a href="#" class="nav-link">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="flex-shrink: 0;">
+                    <path d="M18 1H6a2 2 0 00-2 2h16a2 2 0 00-2-2Zm3 4H3a2 2 0 00-2 2v13a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2ZM3 20V7h18v13H3Zm13-6.5L10 10v7l6-3.5Z"></path>
+                </svg>
+                <span>Підписки</span>
+            </a>
+        </aside>
+
+        <!-- СІТКА З ВІДЕО -->
+        <main>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbkHumzXqcLgCIVNO3fXrg87p6yBKc1PGA-s3dMegsrw&s=10" alt="Прев'ю">
+                        <span class="video-time">12:45</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar"></div>
+                        <div class="video-details">
+                            <h3 class="video-title">Як створити сучасний вебсайт за допомогою HTML та CSS</h3>
+                            <span class="channel-name">Web Dev Studio</span>
+                            <span class="video-meta">15 тис. переглядів • 2 дні тому</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://создание-сайта.net/images/newsnew/newsnew/1-3-782x440.jpg" alt="Прев'ю">
+                        <span class="video-time">08:15</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar"></div>
+                        <div class="video-details">
+                            <h3 class="video-title">Огляд нових технологій у 2026 році</h3>
+                            <span class="channel-name">Tech Channel</span>
+                            <span class="video-meta">120 тис. переглядів • 1 тиждень тому</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://itstolytsa.ua/images/08-it-cources/grafika/variant03_nashy-kursy_photoshop_ui-design.webp" alt="Прев'ю">
+                        <span class="video-time">25:00</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar"></div>
+                        <div class="video-details">
+                            <h3 class="video-title">Повний курс з розробки інтерфейсів для початківців</h3>
+                            <span class="channel-name">Code Master</span>
+                            <span class="video-meta">500 тис. переглядів • 1 місяць тому</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
