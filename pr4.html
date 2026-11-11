@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Практична робота №4</title>
+
+<!-- Шрифти -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    background: #e4e7ec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto Mono', monospace;
+  }
+  h1 { font-family: 'Orbitron', sans-serif; }
+
+  /* корпус клавіатури: три блоки в ряд */
+  .keyboard {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: #b9bec8;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Розмітка за допомогою grid */
+  .main, .nav, .pad {
+    display: grid;
+    grid-auto-rows: 46px;
+    gap: 8px 4px;
+  }
+  .main { grid-template-columns: repeat(30, 1fr); width: 690px; }
+  .nav  { grid-template-columns: repeat(6, 1fr);  width: 138px; }
+  .pad  { grid-template-columns: repeat(8, 1fr);  width: 184px; }
+
+  /* Відступи */
+  button, i { grid-column: span 2; }
+  .half { grid-column: span 1; }   
+  .w3  { grid-column: span 3; }
+  .w4  { grid-column: span 4; }
+  .w5  { grid-column: span 5; }
+  .w12 { grid-column: span 12; }
+  .tall { grid-row: span 2; }      
+
+  /* Тіні для клавіш */
+  button {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 #777, 0 7px 8px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    
+  }
+
+  .nav button, .pad button {
+  font-size: 11px;
+  }
+
+  /* Стан кнопки */
+  button:hover  { background: #d6e4ff; }
+  button:active {
+    background: #3f7cf4;
+    color: #fff;
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #777;
+  }
+</style>
+</head>
+<body>
+
+<h1>Практична робота №4</h1>
+
+<div class="keyboard">
+   
+  <!-- Основний блок -->
+  <div class="main">
+    <button>Esc</button><i></i>
+    <button>F1</button><button>F2</button><button>F3</button><button>F4</button><i class="half"></i>
+    <button>F5</button><button>F6</button><button>F7</button><button>F8</button><i class="half"></i>
+    <button>F9</button><button>F10</button><button>F11</button><button>F12</button>
+
+    <button>`</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>0</button><button>-</button><button>=</button><button class="w4">Backspace</button>
+
+    <button class="w3">Tab</button><button>Q</button><button>W</button><button>E</button><button>R</button><button>T</button><button>Y</button><button>U</button><button>I</button><button>O</button><button>P</button><button>[</button><button>]</button><button class="w3">\</button>
+
+    <button class="w4">Caps Lock</button><button>A</button><button>S</button><button>D</button><button>F</button><button>G</button><button>H</button><button>J</button><button>K</button><button>L</button><button>;</button><button>'</button><button class="w4">Enter</button>
+
+    <button class="w5">Shift</button><button>Z</button><button>X</button><button>C</button><button>V</button><button>B</button><button>N</button><button>M</button><button>,</button><button>.</button><button>/</button><button class="w5">Shift</button>
+
+    <button class="w3">Ctrl</button><button class="w3">Win</button><button class="w3">Alt</button><button class="w12"></button><button class="w3">Alt</button><button class="w3">Win</button><button class="w3">Ctrl</button>
+  </div>
+
+  <!-- Блок навігації -->
+  <div class="nav">
+    <button>PrtSc</button><button>ScrLk</button><button>Pause</button>
+    <button>Ins</button><button>Home</button><button>PgUp</button>
+    <button>Del</button><button>End</button><button>PgDn</button>
+    <i></i><i></i><i></i>
+    <i></i><button>↑</button><i></i>
+    <button>←</button><button>↓</button><button>→</button>
+  </div>
+
+  <!-- Цифровий блок -->
+  <div class="pad">
+    <i></i><i></i><i></i><i></i>
+    <button>Num</button><button>/</button><button>*</button><button>-</button>
+    <button>7</button><button>8</button><button>9</button><button class="tall">+</button>
+    <button>4</button><button>5</button><button>6</button>
+    <button>1</button><button>2</button><button>3</button><button class="tall">Enter</button>
+    <button class="w4">0</button><button>.</button>
+  </div>
+
+</div>
+
+</body>
+</html>
