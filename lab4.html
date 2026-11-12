@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лабораторна робота №4 — Weekly Plan</title>
+
+<!-- Кастомні шрифти -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 20px;
+    background: #eee;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+  }
+
+  /* Сторінка стискається і розтягується разом з вікном */
+  .page {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    border: 3px solid #bbb;
+  }
+
+  /* шапка */
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+  }
+  .header h1 {
+    margin: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .header label { font-size: 10px; font-weight: 700; text-transform: uppercase; }
+  .header input[type="text"] {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #444;
+    background: none;
+  }
+  .checks { text-align: right; }
+  .checks div { margin: 2px 0; }
+
+  /* Розмітка сторінки через grid */
+  .planner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    grid-template-rows: 1.2fr 1fr;
+    grid-template-areas:
+      "todo mon tue wed"
+      "todo thu fri weekend";
+    min-height: 600px;
+  }
+  .todo    { grid-area: todo; }
+  .mon     { grid-area: mon; }
+  .tue     { grid-area: tue; }
+  .wed     { grid-area: wed; }
+  .thu     { grid-area: thu; }
+  .fri     { grid-area: fri; }
+  .weekend { grid-area: weekend; display: grid; grid-template-rows: 1fr 1fr; }
+
+  /* клітинки */
+  .todo, .day {
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+  }
+  .day { display: flex; flex-direction: column; }
+  .day h3 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .day textarea {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    resize: none;
+    padding: 5px;
+    font-family: inherit;
+  }
+  .weekend .day:last-child { border-bottom: 0; }
+
+  /* список справ */
+  .todo { padding: 8px; }
+  .todo h4 { margin: 8px 0 4px; font-size: 10px; text-transform: uppercase; }
+  .row { display: grid; grid-template-columns: 16px 1fr; gap: 6px; margin-bottom: 4px; }
+  .row input[type="text"] {
+    border: 0;
+    border-bottom: 1px solid #888;
+    background: none;
+    min-width: 0;
+  }
+
+  /* на вузькому екрані  */
+  @media (max-width: 700px) {
+    .planner { grid-template-columns: 1fr 1fr; grid-template-rows: auto; grid-template-areas: none; }
+    .planner > * { grid-area: auto; min-height: 150px; }
+    .todo { grid-column: 1 / -1; }
+    .header { grid-template-columns: 1fr; }
+    .checks { text-align: left; }
+  }
+
+    input[type="checkbox"] {
+    accent-color: #2ecc71;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <h1>Weekly Plan</h1>
+    <label>Week of <input type="text"></label>
+    <label>Healthy habit <input type="text"></label>
+    <div class="checks">
+      <div><label>Rocked it <input type="checkbox"></label></div>
+      <div><label>Room for improvement <input type="checkbox"></label></div>
+    </div>
+  </div>
+
+  <div class="planner">
+
+    <div class="todo">
+      <h4>Top 3 goals</h4>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+
+      <h4>Everything else</h4>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+
+      <h4>Next week</h4>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+      <div class="row"><input type="checkbox"><input type="text"></div>
+    </div>
+
+    <div class="day mon"><h3>Monday <input type="checkbox"></h3><textarea></textarea></div>
+    <div class="day tue"><h3>Tuesday <input type="checkbox"></h3><textarea></textarea></div>
+    <div class="day wed"><h3>Wednesday <input type="checkbox"></h3><textarea></textarea></div>
+    <div class="day thu"><h3>Thursday <input type="checkbox"></h3><textarea></textarea></div>
+    <div class="day fri"><h3>Friday <input type="checkbox"></h3><textarea></textarea></div>
+
+    <div class="weekend">
+      <div class="day"><h3>Saturday <input type="checkbox"></h3><textarea></textarea></div>
+      <div class="day"><h3>Sunday <input type="checkbox"></h3><textarea></textarea></div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
