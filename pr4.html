@@ -19,7 +19,8 @@
 
   /* корпус клавіатури */
   .keyboard {
-    display: flex;
+    display: grid;
+    grid-template-columns: 690px 138px 184px;
     gap: 20px;
     padding: 20px;
     background: #b9bec8;
@@ -33,9 +34,9 @@
     grid-auto-rows: 46px;
     gap: 8px 4px;
   }
-  .main { grid-template-columns: repeat(30, 1fr); width: 690px; }
-  .nav  { grid-template-columns: repeat(6, 1fr);  width: 138px; }
-  .pad  { grid-template-columns: repeat(8, 1fr);  width: 184px; }
+  .main { grid-template-columns: repeat(30, 1fr);  }
+  .nav  { grid-template-columns: repeat(6, 1fr);  }
+  .pad  { grid-template-columns: repeat(8, 1fr);  }
 
   /* Відступи */
   button, i { grid-column: span 2; }
@@ -61,6 +62,7 @@
   .nav button, .pad button {
   font-size: 11px;
   }
+
 
   /* Стан кнопки */
   button:hover  { background: #d6e4ff; }
@@ -94,6 +96,7 @@
     <button class="w5">Shift</button><button>Z</button><button>X</button><button>C</button><button>V</button><button>B</button><button>N</button><button>M</button><button>,</button><button>.</button><button>/</button><button class="w5">Shift</button>
 
     <button class="w3">Ctrl</button><button class="w3">Win</button><button class="w3">Alt</button><button class="w12"></button><button class="w3">Alt</button><button class="w3">Win</button><button class="w3">Ctrl</button>
+
   </div>
 
   <!-- Блок навігації -->
@@ -115,8 +118,6 @@
     <button>1</button><button>2</button><button>3</button><button class="tall">Enter</button>
     <button class="w4">0</button><button>.</button>
   </div>
-
-</div>
 
 </body>
 </html>
